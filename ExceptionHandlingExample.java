@@ -5,16 +5,20 @@ public class ExceptionHandlingExample {
         int[] someNumbers = {1, 2, 3, 4};
         int key = 0;
 
-        // The lambda expression (v, k) -> System.out.println(v + k)
-        // Overrides the accept method as one that accepts 2 integers
-        // and prints the sum.
+
         process(someNumbers, key, (v, k) -> System.out.println(v / k));
     }
 
     private static void process(int[] someNumbers, int key, BiConsumer<Integer, Integer> consumer) {
         for (int i :
                 someNumbers) {
-            consumer.accept(i, key);
+            try {
+                consumer.accept(i, key);
+            }
+            catch(ArithmeticException e) {
+                // Inefficient since you do not know of all the inputs that are passed through
+                // and would need to create more and more catch blocks 
+            }
         }
     }
 }
