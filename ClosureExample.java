@@ -1,20 +1,15 @@
 public class ClosureExample {
     public static void main(String[] args) {
         int a = 10;
+
+        // This variable is "effectively" final
         int b = 20;
 
-        // Since doProcess method is called
-        // The doProcess method calls the implementation of process in the main method
-        // Meaning there is NO variable b within the scope of doProcess
-        // but exists since the Java RunTime keeps track of the value of b
-
-        doProcess(a, new Process() {
-
-            @Override
-            public void process(int i) {
-                System.out.println(i + b);
-            }
-        });
+        // Whenever there is a lambda expression and it is using a variable in the scope
+        // The Java Compiler freezes the value
+        // So where the lambda expression goes, it has the frozen value of b
+        // Process p in doProcess contains the frozen value of b
+        doProcess(a, i -> System.out.println(i + b));
     }
 
     public static void doProcess(int i, Process p) {
