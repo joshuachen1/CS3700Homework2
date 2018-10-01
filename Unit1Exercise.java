@@ -22,22 +22,16 @@ public class Unit1Exercise {
         Collections.sort(people, (p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
 
         // Step 2: Create a method that prints all elements in the list
-        // Using Anonymous Inner Class to print all elements
-        printConditionally(people, new Condition() {
-            @Override
-            public boolean test(Person p) {
-                return true;
-            }
-        });
+        // The Lambda Expression is one that is an instance of Condition
+        // and overrides the test method as one that returns a boolean value
+        // and always returns true
+        printConditionally(people, p -> true);
 
         // Step 3: Create a method that prints all people that have last name beginning with 'C'
-        // Using Anonymous Inner Class to print Person with last name starting with 'C'
-        printConditionally(people, new Condition() {
-            @Override
-            public boolean test(Person p) {
-                return p.getLastName().startsWith("C");
-            }
-        });
+        // The Lambda Expression is one that is an instance of Condition
+        // and overrides the test method as one that returns a boolean value
+        // and returns p.getLastName().startsWith("C")
+        printConditionally(people, p -> p.getLastName().startsWith("C"));
 
     }
 
