@@ -22,5 +22,12 @@ public class ThisReferenceExample {
                 return "This is the anonymous inner class";
             }
         });
+
+        thisReferenceExample.doProcess(10, i -> {
+            System.out.println("Value of i is " + i);
+
+            // Lambda does not override the "this" reference like an anonymous inner class does
+            System.out.println(this);
+        });
     }
 }
