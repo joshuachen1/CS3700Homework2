@@ -29,6 +29,8 @@ public class CollectionIterationExample {
         System.out.println("Using lambda for-each loop");
         // forEach accepts a Consumer (a Functional Interface) to be used for lambda
         // also p -> method(p) can be replaced with a Method Reference
+        // Since forEach loops does not care about the order at which it is iterated as long as each element is accessed
+        // then forEach loops are able to run in Parallel
         people.forEach(System.out::println);
     }
 }
