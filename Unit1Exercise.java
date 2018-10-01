@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Unit1Exercise {
 
@@ -35,18 +36,15 @@ public class Unit1Exercise {
 
     }
 
-    // Now the instance of Condition allows us to determine a set condition
-    // making the method more generic rather than too specific.
-    private static void printConditionally(List<Person> people, Condition condition) {
+    // There are built in Function Interfaces for Out-of-the-Box Interfaces
+    // The Predicate Interface contains the method test that accepts a generic object and returns a boolean
+    // Use the Predicate Interface rather than create an Interface
+    private static void printConditionally(List<Person> people, Predicate<Person> predicate) {
         for (Person p :
                 people) {
-            if (condition.test(p)) {
+            if (predicate.test(p)) {
                 System.out.println(p);
             }
         }
     }
-}
-
-interface Condition {
-    boolean test(Person p);
 }
