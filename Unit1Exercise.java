@@ -17,6 +17,8 @@ public class Unit1Exercise {
         // Step 1: Sort list by last name
         // Comparator only has one method
         // Therefore, Comparator is a Functional Interface and can be used as a Lambda Type
+        // Since sort already knows that it will accept two objects,
+        // Type Inferencing allows us to omit Person
         Collections.sort(people, (Person p1, Person p2) -> p1.getLastName().compareTo(p2.getLastName()));
 
         // Step 2: Create a method that prints all elements in the list
