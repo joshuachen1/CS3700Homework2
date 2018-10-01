@@ -21,5 +21,17 @@ public class StreamsExample1 {
         people.stream()
                 .filter(p -> p.getLastName().startsWith("C"))
                 .forEach(p -> System.out.println(p.getFirstName()));
+
+        // Streams have 3 parts
+        // 1. Source (contains the elements on that stream)
+        // 2. Operations performed on stream
+        // 3. Terminal Operation (causes stream to act)
+
+
+        long count = people.stream()                                         // source:     people list
+                        .filter(p -> p.getLastName().startsWith("C"))       // operation:   filter the last names starting with "C"
+                        .count();                                           // terminal:    the count
+
+        System.out.println(count);
     }
 }
