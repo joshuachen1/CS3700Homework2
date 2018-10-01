@@ -23,28 +23,37 @@ public class Unit1Exercise {
         });
 
         // Step 2: Create a method that prints all elements in the list
-        printAll(people);
+        // Using Anonymous Inner Class to print all elements
+        printConditionally(people, new Condition() {
+            @Override
+            public boolean test(Person p) {
+                return true;
+            }
+        });
 
         // Step 3: Create a method that prints all people that have last name beginning with 'C'
-        printLastNameBeginningWithC(people);
+        // Using Anonymous Inner Class to print Person with last name starting with 'C'
+        printConditionally(people, new Condition() {
+            @Override
+            public boolean test(Person p) {
+                return p.getLastName().startsWith("C");
+            }
+        });
 
     }
 
-    private static void printAll(List<Person> people) {
+    // Now the instance of Condition allows us to determine a set condition
+    // making the method more generic rather than too specific.
+    private static void printConditionally(List<Person> people, Condition condition) {
         for (Person p :
                 people) {
-            System.out.println(p);
-        }
-    }
-
-    // This is not efficient since if you want to print last names beginning with 'D'
-    // then you would have to create a whole other method for it
-    private static void printLastNameBeginningWithC(List<Person> people) {
-        for (Person p :
-                people) {
-            if (p.getLastName().startsWith("C")) {
+            if (condition.test(p)) {
                 System.out.println(p);
             }
         }
     }
+}
+
+interface Condition {
+    boolean test(Person p);
 }
