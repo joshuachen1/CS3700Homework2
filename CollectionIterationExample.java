@@ -13,12 +13,12 @@ public class CollectionIterationExample {
 
         // How to Iterate through the List
 
-        // Method 1: for loop
+        // Method 1: for loop (External Iterators)
         for (int i = 0; i < people.size(); i++) {
             System.out.println(people.get(i));
         }
 
-        // Method 2: for-each or for-in loop
+        // Method 2: for-each or for-in loop (External Iterator)
         for (Person p : people) {
             System.out.println(p);
         }
