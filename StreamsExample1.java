@@ -28,9 +28,11 @@ public class StreamsExample1 {
         // 3. Terminal Operation (causes stream to act)
 
 
-        long count = people.stream()                                         // source:     people list
-                        .filter(p -> p.getLastName().startsWith("C"))       // operation:   filter the last names starting with "C"
-                        .count();                                           // terminal:    the count
+        // If the compiler feels that multiple cores can be used
+        // then it will use multiple cores to make it faster
+        long count = people.parallelStream()                        // source:      people list
+                .filter(p -> p.getLastName().startsWith("C"))       // operation:   filter the last names starting with "C"
+                .count();                                           // terminal:    the count
 
         System.out.println(count);
     }
