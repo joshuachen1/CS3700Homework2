@@ -15,12 +15,9 @@ public class Unit1Exercise {
         );
 
         // Step 1: Sort list by last name
-        Collections.sort(people, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                return o1.getLastName().compareTo(o2.getLastName());
-            }
-        });
+        // Comparator only has one method
+        // Therefore, Comparator is a Functional Interface and can be used as a Lambda Type
+        Collections.sort(people, (Person p1, Person p2) -> p1.getLastName().compareTo(p2.getLastName()));
 
         // Step 2: Create a method that prints all elements in the list
         // Using Anonymous Inner Class to print all elements
