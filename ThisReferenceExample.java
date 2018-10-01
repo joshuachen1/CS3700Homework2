@@ -16,6 +16,11 @@ public class ThisReferenceExample {
                 // "this" refers to the new instance of Process on line 10
                 System.out.println(this);
             }
+
+            @Override
+            public String toString() {
+                return "This is the anonymous inner class";
+            }
         });
     }
 }
