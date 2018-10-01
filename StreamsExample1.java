@@ -14,6 +14,10 @@ public class StreamsExample1 {
         // Stream
         // Filter if the last name starts with C
         // if true, then that element moves to the forEach
+
+        // Think of it as an assembly line
+        // Each element gets filtered
+        // then moves to the forEach if valid
         people.stream()
                 .filter(p -> p.getLastName().startsWith("C"))
                 .forEach(p -> System.out.println(p.getFirstName()));
