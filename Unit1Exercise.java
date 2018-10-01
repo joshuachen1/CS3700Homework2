@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Unit1Exercise {
@@ -26,24 +26,28 @@ public class Unit1Exercise {
         // The Lambda Expression is one that is an instance of Condition
         // and overrides the test method as one that returns a boolean value
         // and always returns true
-        printConditionally(people, p -> true);
+        // The next Lambda Expression is a void method
+        performConditionally(people, p -> true, p -> System.out.println(p));
 
         // Step 3: Create a method that prints all people that have last name beginning with 'C'
         // The Lambda Expression is one that is an instance of Condition
         // and overrides the test method as one that returns a boolean value
         // and returns p.getLastName().startsWith("C")
-        printConditionally(people, p -> p.getLastName().startsWith("C"));
+        System.out.println("Printing all persons with last name beginning with C");
+        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p));
 
+        System.out.println("Printing all persons with first name beginning with C");
+        performConditionally(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p));
     }
 
     // There are built in Function Interfaces for Out-of-the-Box Interfaces
     // The Predicate Interface contains the method test that accepts a generic object and returns a boolean
     // Use the Predicate Interface rather than create an Interface
-    private static void printConditionally(List<Person> people, Predicate<Person> predicate) {
+    private static void performConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer) {
         for (Person p :
                 people) {
             if (predicate.test(p)) {
-                System.out.println(p);
+                consumer.accept(p);
             }
         }
     }
