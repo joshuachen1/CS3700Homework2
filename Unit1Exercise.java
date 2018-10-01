@@ -34,10 +34,10 @@ public class Unit1Exercise {
         // and overrides the test method as one that returns a boolean value
         // and returns p.getLastName().startsWith("C")
         System.out.println("Printing all persons with last name beginning with C");
-        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p));
+        performConditionally(people, p -> p.getLastName().startsWith("C"), p -> System.out.println(p.getLastName()));
 
         System.out.println("Printing all persons with first name beginning with C");
-        performConditionally(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p));
+        performConditionally(people, p -> p.getFirstName().startsWith("C"), p -> System.out.println(p.getFirstName()));
     }
 
     // There are built in Function Interfaces for Out-of-the-Box Interfaces
