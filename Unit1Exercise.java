@@ -37,6 +37,8 @@ public class Unit1Exercise {
         }
     }
 
+    // This is not efficient since if you want to print last names beginning with 'D'
+    // then you would have to create a whole other method for it
     private static void printLastNameBeginningWithC(List<Person> people) {
         for (Person p :
                 people) {
