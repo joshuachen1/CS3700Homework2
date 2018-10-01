@@ -11,7 +11,11 @@ public class StreamsExample1 {
                 new Person("Matthew", "Arnold", 39)
         );
 
-        people.stream().
-                forEach(p -> System.out.println(p.getFirstName()));
+        // Stream
+        // Filter if the last name starts with C
+        // if true, then that element moves to the forEach
+        people.stream()
+                .filter(p -> p.getLastName().startsWith("C"))
+                .forEach(p -> System.out.println(p.getFirstName()));
     }
 }
