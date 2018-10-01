@@ -16,7 +16,11 @@ public class MethodReferenceExample2 {
         );
 
         System.out.println("Printing all persons");
+
+        // The Instance Method, p -> System.out.println(p), can be replaced with a Method Reference
         performConditionally(people, p -> true, p -> System.out.println(p));
+
+        performConditionally(people, p -> true, System.out::println); // equivalent to: p -> method(p)
 
     }
 
