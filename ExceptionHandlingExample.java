@@ -5,13 +5,8 @@ public class ExceptionHandlingExample {
         int[] someNumbers = {1, 2, 3, 4};
         int key = 0;
 
-        // Externalize try-catch by wrapping a lambda within a lambda
-        // (v, k) -> System.out.println(v / k) is in wrapperLambda()
+        // Preserve readability by wrapping the lambda within a lambda
         process(someNumbers, key, wrapperLambda((v, k) -> System.out.println(v / k)));
-
-        // Currently, wrapperLambda accepts the lambda expression (v, k) -> System.out.println(v / k)
-        // However, replaces the lambda expression with its own: (a, b) -> System.out.println(a + b)
-        // Therefore, the lambda expression accepted by process is: (a, b) -> System.out.println(a + b)
 
     }
 
@@ -23,6 +18,13 @@ public class ExceptionHandlingExample {
     }
 
     private static BiConsumer<Integer, Integer> wrapperLambda(BiConsumer<Integer, Integer> consumer) {
-        return (a, b) -> System.out.println(a + b);
+        return (v, k) -> {
+            try {
+                consumer.accept(v, k);
+            }
+            catch (ArithmeticException e) {
+                System.out.println("Exception caught in wrapper lambda.");
+            }
+        };
     }
 }
